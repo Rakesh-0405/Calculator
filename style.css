@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #1a1a2e;
+}
+
+.spiderman-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(135deg, #e63946 0%, #1a1a2e 100%);
+    overflow: hidden;
+}
+
+.web {
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    animation: webAnimation 15s linear infinite;
+}
+
+.web:nth-child(1) {
+    left: 20%;
+    animation-delay: 0s;
+}
+.web:nth-child(2) {
+    left: 40%;
+    animation-delay: -5s;
+}
+.web:nth-child(3) {
+    left: 60%;
+    animation-delay: -10s;
+}
+.web:nth-child(4) {
+    left: 80%;
+    animation-delay: -15s;
+}
+
+.spiderman {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-image: url('');
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: swing 8s ease-in-out infinite;
+    top: 30%;
+    left: 10%;
+}
+
+.spider-web {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-image: url('');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+    animation: spin 20s linear infinite;
+    top: 10%;
+    right: 10%;
+}
+
+@keyframes webAnimation {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+@keyframes swing {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    25% { transform: translateX(200px) rotate(10deg); }
+    50% { transform: translateX(400px) rotate(-10deg); }
+    75% { transform: translateX(200px) rotate(5deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.container {
+    position: relative;
+    max-width: 320px;
+    width: 100%;
+    border-radius: 20px;
+    padding: 25px;
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    border: 2px solid #e63946;
+    backdrop-filter: blur(5px);
+}
+
+.display {
+    height: 100px;
+    width: 100%;
+    outline: none;
+    border: none;
+    text-align: right;
+    margin-bottom: 20px;
+    font-size: 32px;
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+    overflow: hidden;
+    font-weight: 500;
+}
+
+.buttons {
+    display: grid;
+    grid-gap: 12px;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.buttons button {
+    padding: 15px 0;
+    border-radius: 12px;
+    border: none;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.buttons button:hover {
+    background: rgba(230, 57, 70, 0.5);
+    transform: translateY(-2px);
+}
+
+.buttons button:active {
+    transform: scale(0.96);
+}
+
+.operator {
+    background: rgba(230, 57, 70, 0.3) !important;
+    color: #ff6b6b !important;
+    font-size: 22px;
+}
+
+.equals {
+    background: linear-gradient(135deg, #e63946 0%, #f4a261 100%) !important;
+    color: white !important;
+    font-size: 24px;
+}
+
+.clear {
+    background: rgba(255, 107, 107, 0.3) !important;
+    color: #ff6b6b !important;
+}
+
+.delete {
+    background: rgba(255, 107, 107, 0.3) !important;
+    color: #ff6b6b !important;
+    font-size: 24px;
+}
+
+@keyframes buttonPress {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+.pressed {
+    animation: buttonPress 0.2s ease;
+}
+
+.buttons button[data-value="+"],
+.buttons button[data-value="-"],
+.buttons button[data-value="*"],
+.buttons button[data-value="/"],
+.buttons button[data-value="="] {
+    font-size: 24px;
+}
